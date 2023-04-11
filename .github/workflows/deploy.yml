@@ -30,6 +30,6 @@ jobs:
 
       - name: Deploy with Gradle
         env:
-          SF_REPO_USER: {{ secrets.SF_REPO_USER }}
-          SF_REPO_PASSWORD: {{ secrets.SF_REPO_PASSWORD }}
+          SF_REPO_USER: ${{ secrets.SF_REPO_USER }}
+          SF_REPO_PASSWORD: ${{ secrets.SF_REPO_PASSWORD }}
         run: chmod +x gradlew && ./gradlew publish
