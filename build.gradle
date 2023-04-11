@@ -17,7 +17,7 @@ allprojects {
             compileOnly 'org.projectlombok:lombok:1.18.24'
             annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-            apig 'io.netty:netty-all:4.1.86.Final'
+            api 'io.netty:netty-all:4.1.86.Final'
         }
     }
 
