@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'maven-publish'
+    id 'java-library'
 }
 
 
@@ -16,7 +17,7 @@ allprojects {
             compileOnly 'org.projectlombok:lombok:1.18.24'
             annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-            implementation 'io.netty:netty-all:4.1.86.Final'
+            apig 'io.netty:netty-all:4.1.86.Final'
         }
     }
 
