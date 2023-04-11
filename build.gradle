@@ -17,7 +17,9 @@ dependencies {
     implementation 'io.netty:netty-all:4.1.86.Final'
 }
 
-tasks.withType(JavaCompile)*.options*.encoding = 'UTF-8'
+java {
+    withSourcesJar()
+}
 
 publishing {
     repositories {
@@ -40,3 +42,5 @@ publishing {
         }
     }
 }
+
+tasks.withType(JavaCompile)*.options*.encoding = 'UTF-8'
