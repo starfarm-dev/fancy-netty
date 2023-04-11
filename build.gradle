@@ -3,44 +3,50 @@ plugins {
     id 'maven-publish'
 }
 
-repositories {
-    mavenCentral()
-}
 
-group 'ru.starfarm'
-version '1.0.0'
+allprojects {
+    apply plugin: 'maven-publish'
 
-dependencies {
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    group 'ru.starfarm'
+    version '1.0.0'
 
-    implementation 'io.netty:netty-all:4.1.86.Final'
-}
-
-java {
-    withSourcesJar()
-}
-
-publishing {
     repositories {
-        maven {
-            url 'https://repo.starfarm.fun/repository/maven-public-releases'
-            credentials {
-                username System.getenv('SF_REPO_USER')
-                password System.getenv('SF_REPO_PASSWORD')
+        mavenCentral()
+
+        dependencies {
+            compileOnly 'org.projectlombok:lombok:1.18.24'
+            annotationProcessor 'org.projectlombok:lombok:1.18.24'
+
+            implementation 'io.netty:netty-all:4.1.86.Final'
+        }
+    }
+
+
+    java {
+        withSourcesJar()
+    }
+
+    publishing {
+        repositories {
+            maven {
+                url 'https://repo.starfarm.fun/repository/maven-public-releases'
+                credentials {
+                    username System.getenv('SF_REPO_USER')
+                    password System.getenv('SF_REPO_PASSWORD')
+                }
+            }
+
+        }
+
+        publications {
+            version(MavenPublication) {
+                groupId group
+                artifactId project.name
+                version version
+                from project.components.java
             }
         }
-
     }
 
-    publications {
-        version(MavenPublication) {
-            groupId group
-            artifactId project.name
-            version version
-            it.from project.components['java']
-        }
-    }
+    tasks.withType(JavaCompile)*.options*.encoding = 'UTF-8'
 }
-
-tasks.withType(JavaCompile)*.options*.encoding = 'UTF-8'
