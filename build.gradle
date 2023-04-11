@@ -14,7 +14,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
-    implementation 'io.netty:netty-all:4.1.86.Final'
+    implementation 'io.netty:netty-all:4.1.86.Final '
 }
 
 tasks.withType(JavaCompile)*.options*.encoding = 'UTF-8'
@@ -24,8 +24,8 @@ publishing {
         maven {
             url 'https://repo.starfarm.fun/repository/maven-public-releases'
             credentials {
-                username System.getenv('BULK_REPO_USER')
-                password System.getenv('BULK_REPO_PASSWORD')
+                username System.getenv('SF_REPO_USER')
+                password System.getenv('SF_REPO_PASSWORD')
             }
         }
 
