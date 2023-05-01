@@ -9,7 +9,7 @@ allprojects {
     apply plugin: 'maven-publish'
 
     group 'ru.starfarm'
-    version '1.0.0'
+    version '1.0.1'
 
     repositories {
         maven { url 'https://repo.starfarm.fun/repository/maven-public' }
